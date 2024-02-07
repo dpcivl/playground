@@ -11,6 +11,7 @@
 - [ ] Object Detection
 - [ ] Segmentation
 - [ ] Labeling to img
+- [ ] 시각화 도구 사용해보기
 
 # 2) 수행 예제
 ## 2.1> MNIST dataset & Image Classification
@@ -22,7 +23,8 @@
 - Test accuracy: 97.8%
 
 ### 2.1.1] CNN 사용해보기
-
+- [CNN 관련 공부 내용 정리](./mnist/docs/wil.cnn.md)
+- Dense layer와 CNN layer 파라미터 개수 비교
 
 ## 2.2> Oxford-IIIT Pet dataset & Inception V1
 - Kaggle에서 Oxford-IIIT Pet dataset 다운로드

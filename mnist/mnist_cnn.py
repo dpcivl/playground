@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+from tensorflow.keras import layers, models
 
 dataset_path = 'C:/Users/dpciv/Desktop/hmt_hi/5/workspace/playground/mnist/dataset/'
 
@@ -30,25 +31,36 @@ train_labels = load_mnist_labels(train_labels_path)
 test_images = load_mnist_images(test_images_path)
 test_labels = load_mnist_labels(test_labels_path)
 
-# 이미지 데이터 평탄화 (28x28 -> 784)
-train_images = train_images.reshape(train_images.shape[0], -1) / 255.0
-test_images = test_images.reshape(test_images.shape[0], -1) / 255.0
-
 # 모델 구성
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(256, activation='sigmoid', input_shape=(784,)),
-    tf.keras.layers.Dense(128, activation='sigmoid'),
-    tf.keras.layers.Dense(10, activation='softmax')
+model = models.Sequential([
+    # Conv2D와 MaxPooling2D 레이어들
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    
+    # Dense 레이어로 네트워크 완성
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')
 ])
-# model.add()를 해줘도 된다!
 
 # 모델 컴파일
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
+# 이미지 데이터의 차원을 조정해야 합니다. MNIST 데이터는 28x28 크기이며, 채널이 1입니다.
+# 따라서 데이터를 (28, 28, 1)의 형태로 reshape해야 합니다.
+train_images = train_images.reshape((60000, 28, 28, 1))
+test_images = test_images.reshape((10000, 28, 28, 1))
+
+# 이미지 데이터 정규화
+train_images, test_images = train_images / 255.0, test_images / 255.0
+
 # 모델 훈련
-model.fit(train_images, train_labels, epochs=10, validation_split=0.2)
+model.fit(train_images, train_labels, epochs=5, validation_split=0.2)
 
 # 모델 평가
 test_loss, test_acc = model.evaluate(test_images, test_labels)
