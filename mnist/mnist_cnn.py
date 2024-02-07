@@ -34,15 +34,15 @@ test_labels = load_mnist_labels(test_labels_path)
 # 모델 구성
 model = models.Sequential([
     # Conv2D와 MaxPooling2D 레이어들
-    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    layers.Conv2D(32, (3, 3), activation='sigmoid', input_shape=(28, 28, 1)),
     layers.MaxPooling2D((2, 2)),
-    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.Conv2D(64, (3, 3), activation='sigmoid'),
     layers.MaxPooling2D((2, 2)),
-    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.Conv2D(64, (3, 3), activation='sigmoid'),
     
     # Dense 레이어로 네트워크 완성
     layers.Flatten(),
-    layers.Dense(64, activation='relu'),
+    layers.Dense(64, activation='sigmoid'),
     layers.Dense(10, activation='softmax')
 ])
 
