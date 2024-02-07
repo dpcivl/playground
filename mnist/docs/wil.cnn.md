@@ -145,7 +145,7 @@ $$
 P = (H \times W \times C + 1) \times K
 $$
 
-P : 파라미터 \space 개수  
+P : 파라미터 개수  
 H : 필터 높이  
 W : 필터 너비  
 C : 입력 채널  
