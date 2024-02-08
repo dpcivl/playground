@@ -12,6 +12,7 @@
 - [ ] Segmentation
 - [ ] Labeling to img
 - [ ] 시각화 도구 사용해보기
+- [ ] image sampling method
 
 # 2) 수행 예제
 ## 2.1> MNIST dataset & Image Classification
