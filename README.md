@@ -12,6 +12,7 @@
 - [ ] Segmentation
 - [ ] Labeling to img
 - [ ] 시각화 도구 사용해보기
+- [ ] image sampling method
 
 # 2) 수행 예제
 ## 2.1> MNIST dataset & Image Classification
@@ -29,6 +30,3 @@
 ## 2.2> Oxford-IIIT Pet dataset & Inception V1
 - Kaggle에서 Oxford-IIIT Pet dataset 다운로드
 - 
-
-# 기록
-2024년 2월 6일 -> 레포지토리 생성, MNIST 예제 실행
